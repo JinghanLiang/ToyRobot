@@ -1,28 +1,36 @@
-This is an implementation of ToyRobot.md
-
-It is written by Java.
-It includes two classes.
+This is an implementation of ToyRobot.md which is based on "command pattern"
 
 =============================================
-TestInitalizer.java
+Client.java
 
-This class is for creating 10 test examples on total random rules. (File "TestInput" has already included 10 examples)
+This class is entry of application. It initialized objects of five concrete commands by determining the command's receiver.
+
+Invoker.java
+
+It invokes the commands by calling execute method respectively.
+
+Command interface
+
+It declares execute method.
+
+5 concrete commands.java
+
+Each command class implements corresponding execute methods.
+
+Robot.java
+
+Robot is the receiver of commands. It execute a specific action.
 
 =============================================
-Operation.java
 
-This is the main function class.
-The 5*5 grid is implemented by array;
-Robot is presented by character "O";
-Move operations will correspond to X and Y operation.
+Valid "Place" processing:
 
+Store commands into queue -> Iteratively retrive command from queues until a valid place is executed -> execute subsequent commands
 
-West -> X-1;
-East -> X+1;
-North -> Y+1;
-South -> Y-1;
 
 =============================================
-Boundary propessing:
-Each move will be test its validation. Invalid move (out of boundary) will be ignored and next cmd will be executed.
-Invalid placement will also be ignored and robot will be place on default place [0,0]
+
+Boundary processing:
+
+Use a two dimmension array to control boundary.
+All operation resuling in out of boundary will throw execption
